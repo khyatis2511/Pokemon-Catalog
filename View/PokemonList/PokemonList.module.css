@@ -1,0 +1,37 @@
+/** Home page **/ 
+
+.box{
+    text-align: center;
+      margin: 0px -10px;
+  }
+  .box .boxCon {
+    cursor: pointer;
+    display: inline-flex;
+    width: 22.97%;
+    margin: 10px;
+    background-color: #fff;
+    border:1px solid #e3e2df;
+  }
+  .box .boxCon:hover{
+    border:1px solid #e3e2df;
+    box-shadow:0px 1px 5px 0px rgba(0,0,0,0.3);
+  }
+  .boxCon .content{
+      text-align: center;
+    width: 100%;
+  }
+  .boxCon .content img{
+      width: 100%;
+    height: 300px;
+  }
+  .boxCon .link{
+    text-decoration: none;
+    padding: 5px 10px;
+    color:var(--darkPink-color);
+    margin: 5px;
+  }
+  .boxCon .link:hover{
+    color:#fff;
+    background-color: var(--darkPink-color);
+  }
+  
