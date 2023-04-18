@@ -8,6 +8,7 @@ import { FC, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
 import PokemonList from "@/View/PokemonList";
 import style from "./PokemonDetails.module.css";
+import { fragment, pokemonDataQry } from "@/utils/query";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -18,40 +19,12 @@ interface PokemonDetailsProps {
 }
 
 const PokemonDetails : FC<PokemonDetailsProps> = ({pokemon}) => {
-  console.log('pokemon data : ', pokemon)
-
   const [evloutionData, setEvloutionData] = useState<pokemonType[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
-
   
   const getPokemanEvolutions = async () => {
-    const {id, name} = pokemon
-
-    console.log(id, name);
-    const fragment = gql `
-      fragment RecursivePokemonFragment on Pokemon {
-        id
-        number
-        name
-        weight{
-          minimum
-          maximum
-        }
-        height{
-          minimum
-          maximum
-        }
-        classification
-        types
-        resistant
-        weaknesses
-        fleeRate
-        maxCP
-        maxHP
-        image
-      }
-    `
+    const {id, name} = pokemon    
     const { data } = await client.query({
       query: gql`
       query pokemon {
@@ -82,8 +55,6 @@ const PokemonDetails : FC<PokemonDetailsProps> = ({pokemon}) => {
     setEvloutionData(data.pokemon.evolutions);
     setShowPopup(true);
   }
-
-  console.log(evloutionData);
 
   if (router.isFallback) {
     return (
@@ -161,31 +132,7 @@ export default PokemonDetails;
 
 export const getStaticPaths : GetStaticPaths = async () => {
   const { data } = await client.query({
-    query: gql`
-    {
-      pokemons(first: 20){
-        id
-        number
-        name
-        weight{
-          minimum
-          maximum
-        }
-        height{
-          minimum
-          maximum
-        }
-        classification
-        types
-        resistant
-        weaknesses
-        fleeRate
-        maxCP
-        maxHP
-        image
-      }
-    }
-    `,
+    query: pokemonDataQry ,
   });
 
   const {pokemons} = data;
@@ -201,7 +148,6 @@ export const getStaticPaths : GetStaticPaths = async () => {
     paths,
     fallback : true
   }
-  
 }
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
