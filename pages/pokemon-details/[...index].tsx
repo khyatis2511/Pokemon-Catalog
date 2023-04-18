@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
 import PokemonList from "@/View/PokemonList";
+import style from "./PokemonDetails.module.css";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -80,7 +81,6 @@ const PokemonDetails : FC<PokemonDetailsProps> = ({pokemon}) => {
     });
     setEvloutionData(data.pokemon.evolutions);
     setShowPopup(true);
-    // console.log('evloution dta:', data);
   }
 
   console.log(evloutionData);
@@ -99,36 +99,44 @@ const PokemonDetails : FC<PokemonDetailsProps> = ({pokemon}) => {
   
   return (
     <>
-    <div>
+    <h1 className="heading">Pokemon Details</h1>
+    <div className={style.detailsDiv}>
       <img 
         src={pokemon.image} 
         alt={pokemon.name} 
         title={pokemon.name} 
       />
-      <div>
-        <h3>{pokemon.name}</h3>
-        <p>maximum height : {pokemon.height.maximum}</p>
-        <p>maximum weight : {pokemon.weight.maximum}</p>
-        <p>Classification : {pokemon.classification}</p>
-        <div>
-          <h2>Type</h2>
+      <div className={style.content}>
+        <h2>{pokemon.name}</h2>
+        <p><b>Height : </b> {pokemon.height.minimum}-{pokemon.height.maximum}</p>
+        <p><b>Weight : </b> {pokemon.weight.minimum}-{pokemon.weight.maximum}</p>
+        <p><b>Classification : </b> {pokemon.classification}</p>
+        <div className={style.typeData}>
+          <h3>Type</h3>
+          <ul>
           {pokemon.types.map((type) => (
-            <p key={type}>{type}</p>
+            <li key={type} className="btn">{type}</li>
           ))}
+          </ul>
         </div>
-        <div>
-          <h2>Resistant</h2>
+        <div className={style.typeData}>
+          <h3>Resistant</h3>
+          <ul>
           {pokemon.resistant.map((resistant1) => (
-            <p key={resistant1}>{resistant1}</p>
+            <li key={resistant1} className="btn">{resistant1}</li>
           ))}
+          </ul>
         </div>
-        <div>
-          <h2>Weaknesses</h2>
+        <div className={style.typeData}>
+          <h3>Weaknesses</h3>
+          <ul>
           {pokemon.weaknesses.map((weakness) => (
-            <p key={weakness}>{weakness}</p>
+            <li key={weakness} className="btn">{weakness}</li>
           ))}
+          </ul>
         </div>
         <button 
+          className={`btn ${style.evlBtn}`}
           type="button"
           onClick={getPokemanEvolutions}
         >
@@ -136,12 +144,14 @@ const PokemonDetails : FC<PokemonDetailsProps> = ({pokemon}) => {
         </button>
       </div>
     </div>
-    {showPopup && <div>
-      <button type="button" onClick={() => setShowPopup(false)}>Close</button>
-      {evloutionData.length !== 0 ? 
-        <PokemonList pokemonData={evloutionData} /> : 
+    {showPopup && <div className={style.evlPopup}>
+      <div className={style.modelDiv}>
+      <button type="button" className={style.closeBtn} onClick={() => setShowPopup(false)}>X</button>
+      {evloutionData && evloutionData.length !== 0 ? 
+        <PokemonList pokemonData={evloutionData} setShowPopup={setShowPopup} /> : 
         <p>Data not found.</p>
       }
+      </div>
     </div>}
     </>
   );

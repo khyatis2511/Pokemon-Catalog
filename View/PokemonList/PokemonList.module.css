@@ -24,6 +24,9 @@
       width: 100%;
     height: 300px;
   }
+  .boxCon .content .data{
+    padding: 20px;
+  }
   .boxCon .link{
     text-decoration: none;
     padding: 5px 10px;
