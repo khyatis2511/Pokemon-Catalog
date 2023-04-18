@@ -19,7 +19,7 @@ const PokemonHome: FC<PokemonHomeProps> = ({pokemonData, pageNumber}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1>Pokemon List</h1>
+        <h1 className="heading">Pokemon List</h1>
         <PokemonList pokemonData={pokemonData} />
         <Pagination pageCounter={pageNumber} />
       </div>

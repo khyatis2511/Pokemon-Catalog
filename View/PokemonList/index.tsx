@@ -2,28 +2,35 @@
 import { pokemonType } from "@/utils/types";
 import { FC } from "react";
 import style from './PokemonList.module.css'
+import Link from "next/link";
 
 interface PokemonListProps {
   pokemonData: pokemonType[],
+  setShowPopup?: Function
 }
 
-const PokemonList : FC<PokemonListProps> = ({pokemonData}) => {
+const PokemonList : FC<PokemonListProps> = ({pokemonData, setShowPopup}) => {
   return (
   <div className={style.box}>
     {pokemonData instanceof Array && pokemonData.map((pokemon : pokemonType) => (
-      <div key={pokemon.number} className={style.boxCon}>
+      <Link 
+        href={`/pokemon-details/${pokemon.id}/${pokemon.name}`} 
+        onClick={() => setShowPopup ? setShowPopup(false) : null} 
+        key={pokemon.number} 
+        className={style.boxCon}
+      >
         <div className={style.content}>
           <img 
             src={pokemon.image}
             alt={pokemon.name}
             title={pokemon.name}
           />
-          <div>
-            <p>{pokemon.number}</p>
+          <div className={style.data}>
+            <p>#{pokemon.number}</p>
             <h3>{pokemon.name}</h3>
           </div>
         </div>
-      </div>
+      </Link>
     ))}
   </div>
   )

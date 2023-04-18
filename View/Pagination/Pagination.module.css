@@ -1,10 +1,10 @@
 /* pagination */
 .pagination{
     overflow: auto;
+    padding: 40px 20px;
+    margin-bottom: 20px;
   }
   .pagination .page{
-    margin: 20px 0px;
-    display: inline-block;
     padding: 10px 5px;
   }
   .paginationUl{
@@ -34,19 +34,3 @@
     border: 1px solid #9a1750;
   }
   /* --- end pagination */
-
-  .btn{
-    padding: 10px 20px;
-    color: var(--darkPink-color);
-    background-color: transparent;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .btnMargin{
-    margin: 5px 0px;
-  }
-  .btn:hover{
-    color: #000;
-  }

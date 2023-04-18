@@ -1,0 +1,65 @@
+.detailsDiv {
+    display: inline-flex;
+    border: 1px solid #ccc;
+    width: 90%;
+    margin: 1% 5% 1% 5%;
+    background: #fff;
+}
+.detailsDiv img {
+    height: 45%;
+    width: 45%;
+    padding: 20px;
+    background: #fff;
+}
+.detailsDiv .content {
+    width: 55%;
+    padding: 20px;
+    background: lightgoldenrodyellow;
+}
+.detailsDiv .content p {
+    margin: 10px 0px;
+    color: #5e5757;
+}
+.detailsDiv .content .typeData {
+    margin-top: 5px;
+}
+
+.detailsDiv .content .typeData h3 {
+    color: #9a1750;
+}
+
+.detailsDiv .content .typeData ul {
+    display: inline-flex;
+    list-style: none;
+}
+.detailsDiv .content .typeData ul li{
+    margin: 10px 10px 10px 0px;
+}
+.evlBtn {
+    color: #fff;
+    background: #9a1750;
+}
+.evlPopup {
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.evlPopup .modelDiv {
+    background: #fff;
+    margin: 2% 10%;
+    padding: 20px;
+    width: 100%;
+}
+.closeBtn {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 900;
+}

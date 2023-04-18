@@ -100,6 +100,27 @@ a {
   text-decoration: none;
 }
 
+.btn{
+  padding: 10px 20px !important;
+  color: var(--darkPink-color);
+  background-color: transparent;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.btnMargin{
+  margin: 5px 0px;
+}
+.btn:hover{
+  color: #000;
+}
+
+.heading {
+  text-align: center;
+  margin: 40px 0px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -13,7 +13,7 @@ const Pagination : FC<PaginationProps> = ({pageCounter}) => {
     <li className={style.pageItem} key={index}>
       <Link
         href={`/${index + 1}`}
-        className={`${style.btn} ${style.pageBtn} ${index + 1 === pageCounter ? style.active : ''}`}
+        className={`btn ${style.pageBtn} ${index + 1 === pageCounter ? style.active : ''}`}
         // onClick={() => dispatch(setPageCounter(index + 1))}
       >
         {index + 1}
@@ -33,7 +33,7 @@ const Pagination : FC<PaginationProps> = ({pageCounter}) => {
             className="btn"
             // onClick={() => dispatch(previous())}
             style={{
-              display: `${pageCounter === 1 ? 'none' : 'inline-block'}`,
+              display: `${pageCounter === 1 ? 'none' : 'inline'}`,
             }}
           >
             Previous
@@ -43,10 +43,10 @@ const Pagination : FC<PaginationProps> = ({pageCounter}) => {
         <li className={style.pageItem}>
           <Link
             href={`/${pageCounter + 1}`}
-            className={style.btn}
+            className="btn"
             // onClick={() => dispatch(next())}
             style={{
-              display: `${pageCounter === numberOfButtons ? 'none' : 'inline-block'}`,
+              display: `${pageCounter === numberOfButtons ? 'none' : 'inline'}`,
             }}
           >
             Next
