@@ -21,15 +21,15 @@ const Home : FC<HomeProps> = ({pokemonData}) => {
 export default Home;
 
 export const getStaticProps : GetStaticProps = async () => {
-  const { data } = await client.query({
+  const clientData = await client.query({
     query: pokemonDataQry,
   });
 
-  const {pokemons} = data;
+  const pokemonsData = clientData?.data;
 
   return {
     props: {
-      pokemonData: pokemons,
+      pokemonData: pokemonsData?.pokemons || [],
     },
  };
 }
